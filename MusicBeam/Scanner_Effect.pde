@@ -42,7 +42,8 @@ class Scanner_Effect extends Effect
   void draw()
   {
 
-    stg.fill(hueSlider.getValue(), 100, 100);
+    stg.stroke(hueSlider.getValue(), 100, 100);
+    stg.strokeWeight(weightSlider.getValue());
 
     rotation = (rotation+speedSlider.getValue()/20)%(9*PI);
 
@@ -90,43 +91,40 @@ class Scanner_Effect extends Effect
   void rotateRight()
   {
     rotate(rotation);
-    stg.rect(-stg.getMaxRadius()/2, -weightSlider.getValue()/2, stg.getMaxRadius(), weightSlider.getValue());
-    rotate(PI/2);
-    stg.fill((hueSlider.getValue()+120)%360, 100, 100);
-    stg.rect(-stg.getMaxRadius()/2, -weightSlider.getValue()/2, stg.getMaxRadius(), weightSlider.getValue());
+    stg.line(-stg.getMaxRadius(), 0, stg.getMaxRadius(), 0);
+    stg.stroke((hueSlider.getValue()+120)%360, 100, 100);
+    stg.line(0, -stg.getMaxRadius(), 0, stg.getMaxRadius());
   }
 
   void rotateLeft()
   {
     rotate(-rotation);
-    stg.rect(-stg.getMaxRadius()/2, -weightSlider.getValue()/2, stg.getMaxRadius(), weightSlider.getValue());
-    rotate(-PI/2);
-    stg.fill((hueSlider.getValue()+120)%360, 100, 100);
-    stg.rect(-stg.getMaxRadius()/2, -weightSlider.getValue()/2, stg.getMaxRadius(), weightSlider.getValue());
+    stg.line(-stg.getMaxRadius(), 0, stg.getMaxRadius(), 0);
+    stg.stroke((hueSlider.getValue()+120)%360, 100, 100);
+    stg.line(0, -stg.getMaxRadius(), 0, stg.getMaxRadius());
   }
 
   void rotateOpposite()
   {
     rotate(rotation);
-    stg.rect(-stg.getMaxRadius()/2, -weightSlider.getValue()/2, stg.getMaxRadius(), weightSlider.getValue());
-    rotate(-2*rotation);
-    stg.fill((hueSlider.getValue()+120)%360, 100, 100);
-    stg.rect(-stg.getMaxRadius()/2, -weightSlider.getValue()/2, stg.getMaxRadius(), weightSlider.getValue());
+    stg.line(-stg.getMaxRadius(), 0, stg.getMaxRadius(), 0);
+    stg.stroke((hueSlider.getValue()+120)%360, 100, 100);
+    stg.line(0, -stg.getMaxRadius(), 0, stg.getMaxRadius());
   }
 
   void LinesDissolve()
   {
     translate(0, (stg.height-weightSlider.getValue())*((rotation%PI)/PI)/2);
-    stg.rect(-stg.getMaxRadius()/2, -weightSlider.getValue()/2, stg.getMaxRadius(), weightSlider.getValue());
+    stg.line(-stg.getMaxRadius(), 0, stg.getMaxRadius(), 0);
     translate(0, -(stg.height-weightSlider.getValue())*(rotation%PI/PI));
-    stg.rect(-stg.getMaxRadius()/2, -weightSlider.getValue()/2, stg.getMaxRadius(), weightSlider.getValue());
+    stg.line(-stg.getMaxRadius(), 0, stg.getMaxRadius(), 0);
   }
 
   void LinesJoin()
   {
     translate(0, (stg.height-weightSlider.getValue())*(1-((rotation%PI)/PI))/2);
-    stg.rect(-stg.getMaxRadius()/2, -weightSlider.getValue()/2, stg.getMaxRadius(), weightSlider.getValue());
+    stg.line(-stg.getMaxRadius(), 0, stg.getMaxRadius(), 0);
     translate(0, -(stg.height-weightSlider.getValue())*(1-((rotation%PI)/PI)));
-    stg.rect(-stg.getMaxRadius()/2, -weightSlider.getValue()/2, stg.getMaxRadius(), weightSlider.getValue());
+    stg.line(-stg.getMaxRadius(), 0, stg.getMaxRadius(), 0);
   }
 }
