@@ -16,7 +16,7 @@ public class Stage extends PApplet {
   }
 
   public void settings() {
-    fullScreen(P2D, 2);
+    fullScreen(P2D, 1);
   }
 
   public void setup() {
